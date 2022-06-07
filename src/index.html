@@ -65,13 +65,12 @@
         -webkit-overflow-scrolling: touch;
       }
     </style>
-
-    
+        
     <!-- Custom styles for this template -->
     <link href="css/list-groups.css" rel="stylesheet">
+
   </head>
   <body>
-    
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
       <symbol id="bootstrap" viewBox="0 0 118 94">
         <title>Bootstrap</title>
@@ -92,47 +91,98 @@
         <path d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z"/>
         <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
       </symbol>
+
     </svg>
 
-    <div class="b-example-divider"></div>
+    <div class="container py-4">
+      <header class="pb-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" fill="currentColor" class="bi bi-check2-square" viewBox="0 0 16 16">
+            <path d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z"/>
+            <path d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
+          </svg>
+          <span class="fs-4">Select your Options</span>
+        </a>
+      </header>
 
-    <div class="list-group w-auto">
-      <label class="list-group-item d-flex gap-3">
-        <input class="form-check-input flex-shrink-0" type="checkbox" value="" checked style="font-size: 1.375em;">
-        <span class="pt-1 form-checked-content">
-          <strong>Cancelling service</strong>
-          <small class="d-block text-muted">
-            <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#x-octagone"/></svg>
-            Cancel the current service
-          </small>
-        </span>
-      </label>
-      <label class="list-group-item d-flex gap-3">
-        <input class="form-check-input flex-shrink-0" type="checkbox" value="" style="font-size: 1.375em;">
-        <span class="pt-1 form-checked-content">
-          <strong>Recovering</strong>
-          <small class="d-block text-muted">
-            <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#cash-stack"/></svg>
-            Recovering money from the individual
-          </small>
-        </span>
-      </label>
-      <label class="list-group-item d-flex gap-3">
-        <input class="form-check-input flex-shrink-0" type="checkbox" value="" style="font-size: 1.375em;">
-        <span class="pt-1 form-checked-content">
-          <strong>Address change</strong>
-          <small class="d-block text-muted">
-            <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#house"/></svg>
-            Resident is changing his address
-          </small>
-        </span>
-      </label>
+      <div class="list-group w-auto">
+        <label class="list-group-item d-flex gap-3">
+          <input class="form-check-input flex-shrink-0" type="checkbox" value="" data-bs-toggle="collapse" data-bs-target="#cb-1" aria-expanded="false" aria-controls="cb-1" checked style="font-size: 1.375em;">
+          <span class="pt-1 form-checked-content">
+            <strong>Emm. Dém</strong>
+            <small class="d-block text-muted">
+              <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#x-octagone"/></svg>
+              Emménament / Déménagement
+            </small>
+          </span>
+        </label>
+
+        <label class="list-group-item d-flex gap-3 collapse" id="cb-1">
+          <input class="form-check-input flex-shrink-0" type="checkbox" value="" data-bs-toggle="collapse" data-bs-target="#cb-1-1" aria-expanded="false" aria-controls="cb-1-1" checked style="font-size: 1.375em;">
+          <span class="pt-1 form-checked-content">
+            <strong>Dém.Simple</strong>
+            <small class="d-block text-muted">
+              <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#x-octagone"/></svg>
+              Déménagement simple
+            </small>
+          </span>
+        </label>
+        <label class="list-group-item d-flex gap-3 collapse" id="cb-1-1">
+          <input class="form-check-input flex-shrink-0" type="checkbox" value="" data-bs-toggle="collapse" checked style="font-size: 1.375em;">
+          <span class="pt-1 form-checked-content">
+            <strong>Nouvelle adresse de facturation</strong>
+            <small class="d-block text-muted">
+              <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#x-octagone"/></svg>
+              Nouvelle adresse de facturation
+            </small>
+          </span>
+        </label>
+
+        <label class="list-group-item d-flex gap-3">
+          <input class="form-check-input flex-shrink-0" type="checkbox" value="" style="font-size: 1.375em;">
+          <span class="pt-1 form-checked-content">
+            <strong>MAJ</strong>
+            <small class="d-block text-muted">
+              <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#cash-stack"/></svg>
+              Recovering money from the individual
+            </small>
+          </span>
+        </label>
+        <label class="list-group-item d-flex gap-3">
+          <input class="form-check-input flex-shrink-0" type="checkbox" value="" style="font-size: 1.375em;">
+          <span class="pt-1 form-checked-content">
+            <strong>Address change</strong>
+            <small class="d-block text-muted">
+              <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#house"/></svg>
+              Resident is changing his address
+            </small>
+          </span>
+        </label>
+      </div>
     </div>
 
     <div class="b-example-divider"></div>
 
-    <!-- JavaScript Bundle with Popper -->
-    <script src="bootstrap.bundle.min.js"></script>
+    <div class="container py-4">
+      <header class="pb-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" fill="currentColor" class="bi bi-file-earmark-text" viewBox="0 0 16 16">
+            <path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"/>
+            <path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5L9.5 0zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
+          </svg>
+          <span class="fs-4">Generated Report</span>
+        </a>
+      </header>
+  
+      <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+          <h1 class="display-5 fw-bold">Name of the report</h1>
+          <p class="fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
+        </div>
+      </div>
+    </div>
 
+    <!-- JavaScript Bundle with Popper -->
+    <script src="js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
