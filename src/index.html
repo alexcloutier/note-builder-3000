@@ -65,7 +65,7 @@
         -webkit-overflow-scrolling: touch;
       }
     </style>
-        
+
     <!-- Custom styles for this template -->
     <link href="css/list-groups.css" rel="stylesheet">
 
@@ -101,68 +101,669 @@
             <path d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z"/>
             <path d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
           </svg>
-          <span class="fs-4">Select your Options</span>
+          <span class="fs-4">Choisir les éléments de la note</span>
         </a>
       </header>
 
-      <div class="list-group w-auto">
-        <label class="list-group-item d-flex gap-3">
-          <input class="form-check-input flex-shrink-0" type="checkbox" value="" data-bs-toggle="collapse" data-bs-target="#cb-1" aria-expanded="false" aria-controls="cb-1" checked style="font-size: 1.375em;">
-          <span class="pt-1 form-checked-content">
-            <strong>Emm. Dém</strong>
-            <small class="d-block text-muted">
-              <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#x-octagone"/></svg>
-              Emménament / Déménagement
-            </small>
-          </span>
-        </label>
+      
+       <div class="container overflow-hidden">
+        <div class="row gy-5">
+          <div class="col-6">
+            <form class="form-floating">
+              <input type="email" class="form-control" id="floatingInputValue" placeholder="John Doe CC" value="">
+                <label for="floatingInputValue">Nom du client</label>
+            </form>
+            <div class="p-3"></div>
+        </div>
+      </div>
 
-        <label class="list-group-item d-flex gap-3 collapse" id="cb-1">
-          <input class="form-check-input flex-shrink-0" type="checkbox" value="" data-bs-toggle="collapse" data-bs-target="#cb-1-1" aria-expanded="false" aria-controls="cb-1-1" checked style="font-size: 1.375em;">
-          <span class="pt-1 form-checked-content">
-            <strong>Dém.Simple</strong>
-            <small class="d-block text-muted">
-              <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#x-octagone"/></svg>
-              Déménagement simple
-            </small>
-          </span>
-        </label>
-        <label class="list-group-item d-flex gap-3 collapse" id="cb-1-1">
-          <input class="form-check-input flex-shrink-0" type="checkbox" value="" data-bs-toggle="collapse" checked style="font-size: 1.375em;">
-          <span class="pt-1 form-checked-content">
-            <strong>Nouvelle adresse de facturation</strong>
-            <small class="d-block text-muted">
-              <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#x-octagone"/></svg>
-              Nouvelle adresse de facturation
-            </small>
-          </span>
-        </label>
+      
 
-        <label class="list-group-item d-flex gap-3">
-          <input class="form-check-input flex-shrink-0" type="checkbox" value="" style="font-size: 1.375em;">
-          <span class="pt-1 form-checked-content">
-            <strong>MAJ</strong>
-            <small class="d-block text-muted">
-              <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#cash-stack"/></svg>
-              Recovering money from the individual
+      <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+              <span class="pt-1 form-content">
+              <strong>E/D</strong>
+              <small class="d-block text-muted">
+                <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#house"/></svg>
+                Dém. Simple / Emm. Simple / 1P2LC / Décès
             </small>
           </span>
-        </label>
-        <label class="list-group-item d-flex gap-3">
-          <input class="form-check-input flex-shrink-0" type="checkbox" value="" style="font-size: 1.375em;">
-          <span class="pt-1 form-checked-content">
-            <strong>Address change</strong>
-            <small class="d-block text-muted">
-              <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#house"/></svg>
-              Resident is changing his address
-            </small>
-          </span>
-        </label>
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <div class="accordion accordion-flush" id="accordionExample2">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingOne2">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne2" aria-expanded="false" aria-controls="collapseOne2">
+                      Déménagement Simple
+                    </button>
+                  </h2>
+                  <div id="collapseOne2" class="accordion-collapse collapse" aria-labelledby="headingOne2" data-bs-parent="#accordionExample2">
+                    <div class="accordion-body">
+                      <div class="container">
+                        <div class="row">
+                          <div class="mb-1">
+                            <label for="demadresse" class="form-label"></label>
+                            <input type="text" class="form-control" id="demadresse" placeholder="Adresse de fin de responsabilité">
+                          </div>
+                        
+                          <div class="row">
+                              <div class="mb-1">
+                                <div class="d-inline-flex p-3">
+                                  <label for="startDate"></label>
+                                  <input id="startDate" class="form-control" type="date">
+                                  <span id="startDateSelected"></span>
+                                </div>
+                              </div>
+                            <div class="p-1"></div>
+                         </div> 
+                        </div>
+                        <div class="row">
+                          <div class="mb-3">
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="majOptions" id="maj1" value="option1">
+                             <label class="form-check-label" for="maj1">MAJ de l'adresse</label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="majOptions" id="maj2" value="option2">
+                              <label class="form-check-label" for="maj2">MAJ refusée</label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="majOptions" id="maj3" value="option3">
+                              <label class="form-check-label" for="maj3">MAJ future</label>
+                            </div>
+                          </div>
+                            <div class="mb-3">
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="soldemve">
+                                <label class="form-check-label" for="soldemve">
+                                Avisé solde de fin d'abonnement MVE
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingTwo2">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo2">
+                      Emménagement Simple
+                    </button>
+                  </h2>
+                  <div id="collapseTwo2" class="accordion-collapse collapse" aria-labelledby="headingTwo2" data-bs-parent="#accordionExample2">
+                    <div class="accordion-body">
+                      <div class="container">
+                        <div class="row">
+                          <div class="mb-1">
+                            <label for="emmadresse" class="form-label"></label>
+                            <input type="text" class="form-control" id="emmadresse" placeholder="Adresse de prise de responsabilité">
+                          </div>
+                            <div class="row">
+                              <div class="mb-3">
+                                <div class="d-inline-flex p-3">
+                                  <label for="emmDate"></label>
+                                  <input id="emmDate" class="form-control" type="date" value="" placeholder="2013-01-25">
+                                  <span id="startDateSelected"></span>
+                              </div>
+                            </div>
+                            </div>
+                          </div>                         
+                              <div class="row"> 
+                                <div class="col">
+                                  <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                    <label class="form-check-label" for="flexSwitchCheckDefault">Accepte MVE</label>
+                                  </div>
+                                </div>
+                                  <div class="col">
+                                    <div class="form-check form-switch">
+                                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault2">
+                                      <label class="form-check-label" for="flexSwitchCheckDefault2">Accepte PA</label>
+                                    </div>
+                                  </div>
+                              </div>
+                              <div class="row">
+                                <div class="col">
+                                  <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault3">
+                                    <label class="form-check-label" for="flexSwitchCheckDefault3">Adhère FI</label>
+                                  </div>
+                                </div>
+                                <div class="col">
+                                  <div class="mb-3">
+                                    <div class="form-check form-switch">
+                                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault4">
+                                      <label class="form-check-label" for="flexSwitchCheckDefault4">Accepte Frais</label>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                          
+                              <div class="row">
+                                <div class="mb-3">
+                                  <div class="col">
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                      <label class="form-check-label" for="gridCheck1">
+                                       IMA Locaux Vacant
+                                      </label>
+                                    </div>
+                                  </div>
+                                  <div class="col">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="edentente">
+                                    <label class="form-check-label" for="edentente">
+                                     Désac. Entente
+                                </div>
+                              </div>
+                              <div class="col">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" id="echumve">
+                                  <label class="form-check-label" for="echumve">
+                                   Poste Échu - MVE Impossible
+                              </div>
+                            </div>
+                              </div>
+                              </div>
+                            </div>  
+                       </div>
+                    </div>
+                  </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingThree2">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree2" aria-expanded="false" aria-controls="collapseThree2">
+                      1P2LC
+                    </button>
+                  </h2>
+                  <div id="collapseThree2" class="accordion-collapse collapse" aria-labelledby="headingThree2" data-bs-parent="#accordionExample2">
+                    <div class="accordion-body">
+                      <div class="container">
+                        <div class="row">
+                          <div class="mb-1">
+                            <label for="1p1adresse" class="form-label"></label>
+                            <input type="text" class="form-control" id="1p1adresse" placeholder="Adresse de fin de responsabilité">
+                          </div>
+                        </div>
+                            <div class="row">
+                              <div class="mb-1">
+                                <div class="d-inline-flex p-3">
+                                  <label for="1p1Date"></label>
+                                  <input id="1p1Date" class="form-control" type="date" value="" placeholder="2013-01-25">
+                                  <span id="startDateSelected"></span>
+                              </div>
+                            </div>
+                          </div>             
+                          <div class="row">
+                            <div class="mb-1">
+                              <label for="1p2adresse" class="form-label"></label>
+                              <input type="text" class="form-control" id="1p2adresse" placeholder="Adresse de prise de responsabilité">
+                            </div>
+                          </div>
+                              <div class="row">
+                                <div class="mb-3">
+                                  <div class="d-inline-flex p-3">
+                                    <label for="1p2date"></label>
+                                    <input id="1p2date" class="form-control" type="date" value="" placeholder="2013-01-25">
+                                    <span id="startDateSelected"></span>
+                                </div>
+                              </div>
+                              </div>
+                            </div>                       
+                              <div class="row"> 
+                                <div class="col">
+                                  <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                    <label class="form-check-label" for="flexSwitchCheckDefault">Accepte MVE</label>
+                                  </div>
+                                </div>
+                                  <div class="col">
+                                    <div class="form-check form-switch">
+                                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault2">
+                                      <label class="form-check-label" for="flexSwitchCheckDefault2">Accepte PA</label>
+                                    </div>
+                                  </div>
+                              </div>
+                              <div class="row">
+                                <div class="col">
+                                  <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault3">
+                                    <label class="form-check-label" for="flexSwitchCheckDefault3">Adhère FI</label>
+                                  </div>
+                                </div>
+                                <div class="col">
+                                  <div class="mb-3">
+                                    <div class="form-check form-switch">
+                                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault4">
+                                      <label class="form-check-label" for="flexSwitchCheckDefault4">Accepte Frais</label>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                          
+                              <div class="row">
+                                <div class="mb-3">
+                                  <div class="col">
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                      <label class="form-check-label" for="gridCheck1">
+                                       IMA Locaux Vacant
+                                      </label>
+                                    </div>
+                                  </div>
+                                  <div class="col">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="edentente">
+                                    <label class="form-check-label" for="edentente">
+                                     Désac. Entente
+                                </div>
+                              </div>
+                              <div class="col">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" id="echumve">
+                                  <label class="form-check-label" for="echumve">
+                                   Poste Échu - MVE Impossible
+                              </div>
+                            </div>
+                              </div>
+                              </div>
+                            </div>  
+                       </div>
+                    </div>
+                  
+                
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFour2">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour2" aria-expanded="false" aria-controls="collapseFour2">
+                    Décès
+                  </button>
+                </h2>
+                <div id="collapseFour2" class="accordion-collapse collapse" aria-labelledby="headingFour2" data-bs-parent="#accordionExample2">
+                  <div class="accordion-body">
+                    <div class="container">
+                      <div class="row">
+                        <div class="mb-1">
+                          <label for="decappelant" class="form-label"></label>
+                          <input type="text" class="form-control" id="decappelant" placeholder="Appelant qui annonce le décès">
+                        </div>
+                          <div class="row">
+                            <div class="mb-1">
+                              <div class="d-inline-flex p-3">
+                                <label for="decDate"></label>
+                                <input id="decDate" class="form-control" type="date" value="" placeholder="2013-01-25">
+                                <span id="startDateSelected"></span>
+                            </div>
+                          </div>
+                          </div>
+                        </div>           
+                          <div class="row">
+                            <div class="mb-1">
+                              <label for="decadresse" class="form-label"></label>
+                              <input type="text" class="form-control" id="decadresse" placeholder="Adresse de fin de responsabilité">
+                            </div>
+                              <div class="row">
+                                <div class="mb-3">
+                                  <div class="d-inline-flex p-3">
+                                    <label for="finDate"></label>
+                                    <input id="finDate" class="form-control" type="date" value="" placeholder="2013-01-25">
+                                    <span id="startDateSelected"></span>
+                                </div>
+                              </div>
+                            </div>                                  
+                        <div class="row">
+                          <div class="mb-3">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="stdmaj">
+                            <label class="form-check-label" for="stdmaj">
+                              Adresse std MAJ
+                            </label>
+                          </div>
+                        </div>
+                        </div>
+                        <div class="row">                          
+                          <div class="col">
+                            <div class="mb-3">
+                            <div class="form-check form-switch">
+                              <input class="form-check-input" type="checkbox" id="reprise" type="button" data-bs-toggle="collapse" data-bs-target="#represpo" aria-expanded="false" aria-controls="represpo">
+                              <label class="form-check-label" for="reprise">Reprise de respo</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="collapse" id="represpo">
+                          <div class="card card-body">
+                            <div class="row">
+                              <div class="mb-0">
+                                <label for="decpartrep" class="form-label"></label>
+                                <input type="text" class="form-control" id="decpartrep" placeholder="Partenaire qui reprend la responsabilité">
+                              </div>
+                                <div class="row">
+                                  <div class="mb-1">
+                                    <div class="d-inline-flex p-3">
+                                      <label for="finDate"></label>
+                                      <input id="finDate" class="form-control" type="date" value="" placeholder="2013-01-25">
+                                      <span id="startDateSelected"></span>
+                                  </div>
+                                </div>
+                              </div> 
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              <span class="pt-1 form-content">
+                <strong>Recouvrement</strong>
+                <small class="d-block text-muted">
+                <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#cash-stack"/></svg>
+                REG / OPTI / LTER / 4REV
+            </small>
+          </span>
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <div class="accordion accordion-flush" id="recou">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingOne3">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne3" aria-expanded="false" aria-controls="collapseOne3">
+                      REG
+                    </button>
+                  </h2>
+                  <div id="collapseOne3" class="accordion-collapse collapse" aria-labelledby="headingOne3" data-bs-parent="#recou">
+                    <div class="accordion-body">
+                      <div class="container">
+                        <div class="row">
+                          <div class="mb-1">
+                            <div class="d-flex">
+                              <div class="p-2 flex-fill">
+                            <label for="regnum" class="form-label"></label>
+                            <input type="text" class="form-control" id="regnum" placeholder="Montant total $">
+                            </div>
+                                <div class="p-2 flex-fill">
+                                  <label for="startDate"></label>
+                                  <input id="startDate" class="form-control" type="date">
+                                  <span id="startDateSelected"></span>
+                                </div>
+                              </div>
 
-    <div class="b-example-divider"></div>
-
+                            <div class="p-1"></div>
+                         </div> 
+                        </div>
+                        <div class="row">
+                            <div class="mb-3">
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="soldemve">
+                                <label class="form-check-label" for="soldemve">
+                                Alerte 48h
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                    </div>
+                  </div> 
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingTwo3">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo3" aria-expanded="false" aria-controls="collapseTwo3">
+                      OPTI
+                    </button>
+                  </h2>
+                  <div id="collapseTwo3" class="accordion-collapse collapse" aria-labelledby="headingTwo3" data-bs-parent="#recou">
+                    <div class="accordion-body">
+                      <div class="container">
+                        <div class="row">
+                          <div class="mb-1">
+                          <div class="d-flex">
+                            <div class="p-2 flex-fill">
+                            <label for="regnum" class="form-label"></label>
+                            <input type="text" class="form-control" id="regnum" placeholder="$">                         
+                        </div>
+                            <div class="p-2 flex-fill">
+                          <label for="optimois" class="form-label"></label>
+                          <input type="text" class="form-control" id="optimois" placeholder="Mois">
+                          </div>
+                                <div class="p-2 flex-fill">
+                                  <label for="startDate"></label>
+                                  <input id="startDate" class="form-control" type="date">
+                                  <span id="startDateSelected"></span>
+                                </div>
+                              </div>
+                            <div class="p-1"></div>
+                         </div> 
+                      </div>
+                        <div class="row">
+                          <div class="col">
+                            <div class="mb-3">
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="soldemve">
+                                <label class="form-check-label" for="soldemve">
+                                Alerte 48h
+                                </label>
+                              </div>
+                              </div>
+                            </div>
+                          </div> 
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingThree3">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree3" aria-expanded="false" aria-controls="collapseThree3">
+                      LTER
+                    </button>
+                  </h2>
+                  <div id="collapseThree3" class="accordion-collapse collapse" aria-labelledby="headingThree3" data-bs-parent="#recou">
+                    <div class="accordion-body">
+                      <div class="container">
+                        <div class="row">
+                          <div class="mb-1">
+                            <label for="1p1adresse" class="form-label"></label>
+                            <input type="text" class="form-control" id="1p1adresse" placeholder="Adresse de fin de responsabilité">
+                          </div>
+                        </div>
+                            <div class="row">
+                              <div class="mb-1">
+                                <div class="d-inline-flex p-3">
+                                  <label for="1p1Date"></label>
+                                  <input id="1p1Date" class="form-control" type="date" value="" placeholder="2013-01-25">
+                                  <span id="startDateSelected"></span>
+                              </div>
+                            </div>
+                          </div>             
+                          <div class="row">
+                            <div class="mb-1">
+                              <label for="1p2adresse" class="form-label"></label>
+                              <input type="text" class="form-control" id="1p2adresse" placeholder="Adresse de prise de responsabilité">
+                            </div>
+                          </div>
+                              <div class="row">
+                                <div class="mb-3">
+                                  <div class="d-inline-flex p-3">
+                                    <label for="1p2date"></label>
+                                    <input id="1p2date" class="form-control" type="date" value="" placeholder="2013-01-25">
+                                    <span id="startDateSelected"></span>
+                                </div>
+                              </div>
+                              </div>
+                            </div>                       
+                              <div class="row"> 
+                                <div class="col">
+                                  <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                    <label class="form-check-label" for="flexSwitchCheckDefault">Accepte MVE</label>
+                                  </div>
+                                </div>
+                                  <div class="col">
+                                    <div class="form-check form-switch">
+                                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault2">
+                                      <label class="form-check-label" for="flexSwitchCheckDefault2">Accepte PA</label>
+                                    </div>
+                                  </div>
+                              </div>
+                              <div class="row">
+                                <div class="col">
+                                  <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault3">
+                                    <label class="form-check-label" for="flexSwitchCheckDefault3">Adhère FI</label>
+                                  </div>
+                                </div>
+                                <div class="col">
+                                  <div class="mb-3">
+                                    <div class="form-check form-switch">
+                                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault4">
+                                      <label class="form-check-label" for="flexSwitchCheckDefault4">Accepte Frais</label>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                          
+                              <div class="row">
+                                <div class="mb-3">
+                                  <div class="col">
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                      <label class="form-check-label" for="gridCheck1">
+                                       IMA Locaux Vacant
+                                      </label>
+                                    </div>
+                                  </div>
+                                  <div class="col">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="edentente">
+                                    <label class="form-check-label" for="edentente">
+                                     Désac. Entente
+                                </div>
+                              </div>
+                              </div>
+                              </div>
+                            </div>  
+                       </div>
+                    </div>
+                  
+                
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFour3">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour3" aria-expanded="false" aria-controls="collapseFour3">
+                    4REV
+                  </button>
+                </h2>
+                <div id="collapseFour3" class="accordion-collapse collapse" aria-labelledby="headingFour3" data-bs-parent="#recou">
+                  <div class="accordion-body">
+                    <div class="container">
+                      <div class="row">
+                        <div class="mb-1">
+                          <label for="decappelant" class="form-label"></label>
+                          <input type="text" class="form-control" id="decappelant" placeholder="Appelant qui annonce le décès">
+                        </div>
+                          <div class="row">
+                            <div class="mb-1">
+                              <div class="d-inline-flex p-3">
+                                <label for="decDate"></label>
+                                <input id="decDate" class="form-control" type="date" value="" placeholder="2013-01-25">
+                                <span id="startDateSelected"></span>
+                            </div>
+                          </div>
+                          </div>
+                        </div>           
+                          <div class="row">
+                            <div class="mb-1">
+                              <label for="decadresse" class="form-label"></label>
+                              <input type="text" class="form-control" id="decadresse" placeholder="Adresse de fin de responsabilité">
+                            </div>
+                              <div class="row">
+                                <div class="mb-3">
+                                  <div class="d-inline-flex p-3">
+                                    <label for="finDate"></label>
+                                    <input id="finDate" class="form-control" type="date" value="" placeholder="2013-01-25">
+                                    <span id="startDateSelected"></span>
+                                </div>
+                              </div>
+                            </div>                                  
+                        <div class="row">
+                          <div class="mb-3">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="stdmaj">
+                            <label class="form-check-label" for="stdmaj">
+                              Adresse std MAJ
+                            </label>
+                          </div>
+                        </div>
+                        </div>
+                        <div class="row">                          
+                          <div class="col">
+                            <div class="mb-3">
+                            <div class="form-check form-switch">
+                              <input class="form-check-input" type="checkbox" id="reprise" type="button" data-bs-toggle="collapse" data-bs-target="#represpo" aria-expanded="false" aria-controls="represpo">
+                              <label class="form-check-label" for="reprise">Reprise de respo</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="collapse" id="represpo">
+                          <div class="card card-body">
+                            <div class="row">
+                              <div class="mb-0">
+                                <label for="decpartrep" class="form-label"></label>
+                                <input type="text" class="form-control" id="decpartrep" placeholder="Partenaire qui reprend la responsabilité">
+                              </div>
+                                <div class="row">
+                                  <div class="mb-1">
+                                    <div class="d-inline-flex p-3">
+                                      <label for="finDate"></label>
+                                      <input id="finDate" class="form-control" type="date" value="" placeholder="2013-01-25">
+                                      <span id="startDateSelected"></span>
+                                  </div>
+                                </div>
+                              </div> 
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              <span class="pt-1 form-content">
+                <strong>Autres</strong>
+                <small class="d-block text-muted">
+                  <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#x-octagone"/></svg>
+                  MAJ / Email / EC / Mandataire / Transferts
+              </small>
+            </span>
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree">
+            <div class="accordion-body">
+              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="p-3"></div>
     <div class="container py-4">
       <header class="pb-3 mb-4 border-bottom">
         <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
@@ -170,7 +771,7 @@
             <path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"/>
             <path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5L9.5 0zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
           </svg>
-          <span class="fs-4">Generated Report</span>
+          <span class="fs-4">Générer la note</span>
         </a>
       </header>
   
@@ -186,3 +787,5 @@
     <script src="js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
+
+
