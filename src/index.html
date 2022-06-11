@@ -446,12 +446,12 @@ function copyToClipboard(element) {
                         <div class="row">                          
                           <div class="col">
                             <div class="mb-3">
-                            <div class="form-check form-switch">
+                           <div class="form-check form-switch">
                               <input class="form-check-input" type="checkbox" id="reprise" type="button" data-bs-toggle="collapse" data-bs-target="#represpo" aria-expanded="false" aria-controls="represpo">
                               <label class="form-check-label" for="reprise">Reprise de respo</label>
                             </div>
                           </div>
-                        </div>
+                        </div> 
                         <div class="collapse" id="represpo">
                           <div class="card card-body">
                             <div class="row">
@@ -508,38 +508,79 @@ function copyToClipboard(element) {
                   <div id="collapseOne4" class="accordion-collapse collapse" aria-labelledby="headingOne4" data-bs-parent="#fact">
                     <div class="accordion-body">
                       <div class="container">
+                        <div class="col">
                         <div class="row">
-                          <div class="mb-1">
+                          <div class="mb-3">
+                            <div class="form-check">
+                            <input class="form-check-input" type="radio" name="mveOptions" id="mve1" value="option1" type="button" data-bs-toggle="collapse" data-bs-target="#ajoutmve" aria-expanded="false" aria-controls="ajoutmve">
+                            <label class="form-check-label" for="maj1">Ajout MVE</label>
+                          </div>
+                          <div class="collapse" id="ajoutmve" data-bs-parent="#collapseOne4">
                             <div class="d-flex">
-                              <div class="p-2 flex-fill">
-                            <label for="regnum" class="form-label"></label>
-                            <input type="text" class="form-control" id="regnum" placeholder="Montant total $">
-                            </div>
-                                <div class="p-2 flex-fill">
-                                  <label for="startDate"></label>
-                                  <input id="startDate" class="form-control" type="date">
-                                  <span id="startDateSelected"></span>
-                                </div>
+                              <div class="flex-fill pe-2 pb-2">
+                                <label for="regnum" class="form-label"></label>
+                                <input type="text" class="form-control" id="regnum" placeholder="Montant$">
                               </div>
-
-                            <div class="p-1"></div>
-                         </div> 
+                              <div class="flex-fill pe-2 pb-2">
+                                <label for="regnum" class="form-label"></label>
+                                <input type="text" class="form-control" id="regnum" placeholder="Mois restant">
+                              </div>
+                              <div class="flex-fill pe-2 pb-4">
+                                <label for="startDatemve"></label>
+                                <input id="startDatemve" class="form-control" type="date">
+                                <span id="startDateSelected"></span>
+                              </div>
+                            </div> 
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="mveOptions" id="mve2" value="option2" type="button" data-bs-toggle="collapse" data-bs-target="#modifmve" aria-expanded="false" aria-controls="modifmve">
+                            <label class="form-check-label" for="maj2">Modif. MVE</label>
+                          </div>
+                          <div class="collapse" id="modifmve" data-bs-parent="#collapseOne4">
+                            <div class="d-flex">
+                              <div class="flex-fill pe-2 pb-2">
+                                <label for="regnum" class="form-label"></label>
+                                <input type="text" class="form-control" id="regnum" placeholder="Montant$">
+                              </div>
+                              <div class="flex-fill pe-2 pb-4">
+                                <label for="startDatemve"></label>
+                                <input id="startDatemve" class="form-control" type="date">
+                                <span id="startDateSelected"></span>
+                              </div>
+                            </div> 
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="mveOptions" id="mve3" value="option3" type="button" data-bs-toggle="collapse" data-bs-target="#retraitmve" aria-expanded="false" aria-controls="retraitmve">
+                            <label class="form-check-label" for="maj3">Retrait MVE</label>
+                          </div>
+                          <div class="collapse" id="retraitmve" data-bs-parent="#collapseOne4">
+                            </div>
+                        </div>
                         </div>
                         <div class="row">
-                            <div class="mb-3">
-                              <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="soldemve">
-                                <label class="form-check-label" for="soldemve">
-                                Alerte 48h
-                                </label>
+                          <div class="mb-3">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" id="soldemve">
+                                  <label class="form-check-label" for="soldemve">
+                                  Explication solde de fin d'abonnement MVE
+                                  </label>
+                                </div>
+                                
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" id="soldemve">
+                                  <label class="form-check-label" for="soldemve">
+                                  Explication écart MVE
+                                  </label>
+                                </div>
+                              </div>
                               </div>
                             </div>
                           </div>
+                        </div>
                       </div>
+               
                     </div>
-                    </div>
-                  </div> 
-                <div class="accordion-item">
+                    <div class="accordion-item">
                   <h2 class="accordion-header" id="headingTwo4">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo4" aria-expanded="false" aria-controls="collapseTwo4">
                       PA
@@ -548,42 +589,53 @@ function copyToClipboard(element) {
                   <div id="collapseTwo4" class="accordion-collapse collapse" aria-labelledby="headingTwo4" data-bs-parent="#fact">
                     <div class="accordion-body">
                       <div class="container">
+                        <div class="col">
                         <div class="row">
-                          <div class="mb-1">
-                          <div class="d-flex">
-                            <div class="p-2 flex-fill">
-                            <label for="regnum" class="form-label"></label>
-                            <input type="text" class="form-control" id="regnum" placeholder="$">                         
-                        </div>
-                            <div class="p-2 flex-fill">
-                          <label for="optimois" class="form-label"></label>
-                          <input type="text" class="form-control" id="optimois" placeholder="Mois">
+                          <div class="mb-3">
+                            <div class="form-check">
+                            <input class="form-check-input" type="radio" name="paOptions" id="pa1" value="option1">
+                            <label class="form-check-label" for="maj1">Ajout PA</label>
                           </div>
-                                <div class="p-2 flex-fill">
-                                  <label for="startDate"></label>
-                                  <input id="startDate" class="form-control" type="date">
-                                  <span id="startDateSelected"></span>
-                                </div>
-                              </div>
-                            <div class="p-1"></div>
-                         </div> 
-                      </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="paOptions" id="pa2" value="option2">
+                            <label class="form-check-label" for="maj2">Retire PA</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="paOptions" id="pa3" value="option3">
+                            <label class="form-check-label" for="maj3">Change le PA</label>
+                          </div>
+                        </div>
+                        </div>
                         <div class="row">
-                          <div class="col">
-                            <div class="mb-3">
-                              <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="soldemve">
-                                <label class="form-check-label" for="soldemve">
-                                Alerte 48h
-                                </label>
+                          <div class="mb-3">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" id="deplacedate" type="button" data-bs-toggle="collapse" data-bs-target="#deplacepa" aria-expanded="false" aria-controls="deplacepa">
+                                  <label class="form-check-label" for="deplacedate">
+                                  Déplace la date d'un PA
+                                  </label>
+                                </div>
+                                <div class="collapse" id="deplacepa">
+                                  <div class="d-flex">
+                                    <div class="flex-fill pe-2 pb-2">
+                                      <label for="startDatemve"></label>
+                                      <input id="startDatemve" class="form-control" type="date">
+                                      <span id="startDateSelected"></span>
+                                    </div>
+                                    <div class="flex-fill pe-2 pb-2">
+                                      <label for="startDatemve"></label>
+                                      <input id="startDatemve" class="form-control" type="date">
+                                      <span id="startDateSelected"></span>
+                                    </div>
+                                  </div> 
+                                </div> 
                               </div>
                               </div>
                             </div>
-                          </div> 
+                          </div>
+                        </div>
                       </div>
+               
                     </div>
-                  </div>
-                  </div>
                 <div class="accordion-item">
                   <h2 class="accordion-header" id="headingThree4">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree4" aria-expanded="false" aria-controls="collapseThree4">
@@ -592,107 +644,85 @@ function copyToClipboard(element) {
                   </h2>
                   <div id="collapseThree4" class="accordion-collapse collapse" aria-labelledby="headingThree4" data-bs-parent="#fact">
                     <div class="accordion-body">
-                       <div class="container">
-                        <div class="row">
-                          <div class="mb-1">
-                          <div class="d-flex">
-                            <div class="p-2 flex-fill">
-                            <label for="lternum" class="form-label"></label>
-                            <input type="text" class="form-control" id="lternum" placeholder="$">                         
-                        </div>
-                            <div class="p-2 flex-fill">
-                          <label for="ltermois" class="form-label"></label>
-                          <input type="text" class="form-control" id="ltermois" placeholder="Mois">
-                          </div>
-                                <div class="p-2 flex-fill">
-                                  <label for="startDate"></label>
-                                  <input id="startDate" class="form-control" type="date">
-                                  <span id="startDateSelected"></span>
-                                </div>
-                              </div>
-                            <div class="p-1"></div>
-                         </div> 
-                      </div>
-                        <div class="row">
-                          <div class="col">
-                            <div class="mb-3">
-                              <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="soldemve">
-                                <label class="form-check-label" for="soldemve">
-                                Alerte 48h
-                                </label>
-                              </div>
-                              </div>
-                            </div>
-                          </div> 
-                      </div>
-                    </div>
-                  </div>
-                  </div>
-                
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="headingFour4">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour4" aria-expanded="false" aria-controls="collapseFour4">
-                    Autres
-                  </button>
-                </h2>
-                <div id="collapseFour4" class="accordion-collapse collapse" aria-labelledby="headingFour4" data-bs-parent="#fact">
-                  <div class="accordion-body">
-                    <div class="container">
-                      <div class="row">
-                        <div class="mb-0">
-                          <div class="d-flex">
-                            <div class="p-2 flex-fill">
-                            <label for="4revnum" class="form-label"></label>
-                            <input type="text" class="form-control" id="4revnum" placeholder="$ Non-Échu">                         
-                            </div>
-                            <div class="p-2 flex-fill">
-                              <label for="nbvers" class="form-label"></label>
-                              <input type="text" class="form-control" id="nbvers" placeholder="Nb de vers.">                         
-                            </div>
-                            <div class="p-2 flex-fill">
-                              <label for="montvers" class="form-label"></label>
-                              <input type="text" class="form-control" id="montvers" placeholder="$ des vers.">
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="mb-1">
-                          <div class="d-flex">
-                            <div class="p-2 flex-fill">
-                              <label for="4rev1ervers" class="form-label"></label>
-                             <input type="text" class="form-control" id="4rev1ervers" placeholder="1er versement $">
-                            </div>
-                            <div class="p-2 flex-fill">
-                              <label for="startDate"></label>
-                              <input id="startDate" class="form-control" type="date">
-                              <span id="startDateSelected"></span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                          <div class="p-1"></div>
-                      <div class="row">
+                      <div class="row mt-2 mx-3">
                         <div class="col">
-                          <div class="mb-3">
                             <div class="form-check">
                               <input class="form-check-input" type="checkbox" id="soldemve">
                               <label class="form-check-label" for="soldemve">
-                              Alerte 48h
+                              Explic. Solde
                               </label>
                             </div>
-                            </div>
                           </div>
+                          <div class="col">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="soldemve">
+                              <label class="form-check-label" for="soldemve">
+                              Explic. Conso
+                              </label>
+                            </div>
                         </div> 
                     </div>
+                    <div class="row mx-3">
+                      <div class="col">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="soldemve">
+                            <label class="form-check-label" for="soldemve">
+                            Explic. Facture Finale
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="soldemve">
+                            <label class="form-check-label" for="soldemve">
+                            Réimp. Facture
+                            </label>
+                          </div>
+                      </div> 
                   </div>
+                  <div class="row mx-3">
+                    <div class="col">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="soldemve">
+                          <label class="form-check-label" for="soldemve">
+                          Retrait FI
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="soldemve">
+                          <label class="form-check-label" for="soldemve">
+                          Création EC
+                          </label>
+                        </div>
+                      </div> 
+                   </div>
+                  <div class="row mx-3">
+                    <div class="col">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="soldemve">
+                          <label class="form-check-label" for="soldemve">
+                          Corr. encaissement
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="soldemve">
+                          <label class="form-check-label" for="soldemve">
+                          Chèque rembours.
+                          </label>
+                        </div>
+                    </div> 
                 </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingTwo">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -989,7 +1019,7 @@ function copyToClipboard(element) {
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" id="soldemve">
                   <label class="form-check-label" for="soldemve">
-                  Procuration
+                  MAJ Adresse std
                   </label>
                 </div>
             </div> 
@@ -1014,20 +1044,62 @@ function copyToClipboard(element) {
       </div>
       <div class="row mx-3">
         <div class="col">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="soldemve">
-              <label class="form-check-label" for="soldemve">
-              Chèque rembours.
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="procuration" type="button" data-bs-toggle="collapse" data-bs-target="#mandat" aria-expanded="false" aria-controls="mandat">
+              <label class="form-check-label" for="procuration">
+                Procuration
               </label>
             </div>
           </div>
+          <div class="collapse" id="mandat">
+            <div class="card card-body">
+              <div class="row">
+                <div class="mb-0">
+                  <label for="mandatnom" class="form-label"></label>
+                  <input type="text" class="form-control" id="mandatnom" placeholder="Partenaire qui reprend la responsabilité">
+                </div>
+                  <div class="row">
+                    <div class="mb-1">
+                      <div class="d-inline-flex p-3">
+                        <label for="mandatdate"></label>
+                        <input id="mandatdate" class="form-control" type="date" value="" placeholder="2013-01-25">
+                        <span id="startDateSelected"></span>
+                    </div>
+                  </div>
+                </div> 
+                <div class="row">
+                  <div class="ms-3">
+                      <div class="col">
+                          <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="soldemve" checked>
+                            <label class="form-check-label" for="soldemve">
+                              Tous les pouvoirs
+                            </label>
+                          </div>
+                        </div>
+                      
+                          <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="soldemve" checked>
+                            <label class="form-check-label" for="soldemve">
+                              Sans date de fin
+                            </label>
+                          </div>
+                          <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="soldemve" checked>
+                            <label class="form-check-label" for="soldemve">
+                              Comptes actifs et futures
+                            </label>
+                          </div>
+                       
+                 
+                  
+                  
+                  </div>
+                </div>
+                  </div>
+          </div>
+        </div>        
           <div class="col">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="soldemve">
-              <label class="form-check-label" for="soldemve">
-                Corr. encaissement
-              </label>
-            </div>
         </div> 
     </div>
           </div>
