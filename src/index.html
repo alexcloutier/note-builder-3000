@@ -44,6 +44,11 @@
         height: 100vh;
       }
 
+      html {
+  overflow-x: hidden;
+  margin-right: calc(-1 * (100vw - 100%));
+}
+
       .bi {
         vertical-align: -.125em;
         fill: currentColor;
@@ -68,6 +73,15 @@
       }
     </style>
 
+<script>
+function copyToClipboard(element) {
+  var $temp = $("<input>");
+  $("body").append($temp);
+  $temp.val($(element).text()).select();
+  document.execCommand("copy");
+  $temp.remove();
+}
+</script>
     <!-- Custom styles for this template -->
     <link href="css/list-groups.css" rel="stylesheet">
 
@@ -96,15 +110,16 @@
 
     </svg>
 
-    <div class="container py-4">
-      <header class="pb-3 mb-4 border-bottom">
+    <div class="container py-1">
+      <header class="pb-1 mb-0 me-3">
+        <div class="d-flex flex-row-reverse bd-highlight">
         <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
-          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" fill="currentColor" class="bi bi-check2-square" viewBox="0 0 16 16">
-            <path d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z"/>
-            <path d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-lightning-fill" viewBox="0 0 16 16">
+            <path d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5z"/>
           </svg>
-          <span class="fs-4">Choisir les éléments de la note</span>
+          <span class="fs-6">Note Builder 3000</span>
         </a>
+      </div>
       </header>
 
       
@@ -128,7 +143,9 @@
               <span class="pt-1 form-content">
               <strong>E/D</strong>
               <small class="d-block text-muted">
-                <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#house"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi me-1" viewBox="0 0 16 16">
+                  <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"/>
+                </svg>
                 Dém. Simple / Emm. Simple / 1P2LC / Décès
             </small>
           </span>
@@ -470,7 +487,10 @@
               <span class="pt-1 form-content">
                 <strong>Recouvrement</strong>
                 <small class="d-block text-muted">
-                <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#cash-stack"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi me-1" viewBox="0 0 16 16">
+                  <path d="M1 3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1H1zm7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
+                  <path d="M0 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V5zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2H3z"/>
+                </svg>
                 REG / OPTI / LTER / 4REV
             </small>
           </span>
@@ -581,7 +601,7 @@
                         </div>
                             <div class="row">
                               <div class="mb-1">
-                                <div class="d-inline-flex p-3">
+                                <div class="p-2 flex-fill">
                                   <label for="1p1Date"></label>
                                   <input id="1p1Date" class="form-control" type="date" value="" placeholder="2013-01-25">
                                   <span id="startDateSelected"></span>
@@ -596,7 +616,7 @@
                           </div>
                               <div class="row">
                                 <div class="mb-3">
-                                  <div class="d-inline-flex p-3">
+                                  <div class="p-2 flex-fill">
                                     <label for="1p2date"></label>
                                     <input id="1p2date" class="form-control" type="date" value="" placeholder="2013-01-25">
                                     <span id="startDateSelected"></span>
@@ -657,7 +677,7 @@
                             </div>  
                        </div>
                     </div>
-                  
+                 
                 
               <div class="accordion-item">
                 <h2 class="accordion-header" id="headingFour3">
@@ -751,7 +771,9 @@
               <span class="pt-1 form-content">
                 <strong>Autres</strong>
                 <small class="d-block text-muted">
-                  <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#x-octagone"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi me-1" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                  </svg>
                   MAJ / Email / EC / Mandataire / Transferts
               </small>
             </span>
@@ -765,26 +787,27 @@
         </div>
       </div>
       
-      <div class="p-3"></div>
+      <div class="p-1"></div>
     <div class="container py-4">
-      <header class="pb-3 mb-4 border-bottom">
-        <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
-          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" fill="currentColor" class="bi bi-file-earmark-text" viewBox="0 0 16 16">
-            <path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"/>
-            <path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5L9.5 0zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
-          </svg>
-          <span class="fs-4">Générer la note</span>
-        </a>
-      </header>
-  
-      <div class="p-5 mb-4 bg-light rounded-3">
-        <div class="container-fluid py-5">
-          <h1 class="display-5 fw-bold">Name of the report</h1>
-          <p class="fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
-        </div>
+      <div class="p-3 mb-1 bg-primary rounded-3" style="--bs-bg-opacity: .1;">
+        <div class="container py-1">
+          <div class="d-flex flex-row-reverse mb-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" fill="currentColor" class="bi bi-clipboard2-check" viewBox="0 0 16 16" type="button" onclick="copyToClipboard('#p1')">
+              <path d="M9.5 0a.5.5 0 0 1 .5.5.5.5 0 0 0 .5.5.5.5 0 0 1 .5.5V2a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 2v-.5a.5.5 0 0 1 .5-.5.5.5 0 0 0 .5-.5.5.5 0 0 1 .5-.5h3Z"/>
+              <path d="M3 2.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 0 0-1h-.5A1.5 1.5 0 0 0 2 2.5v12A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 12.5 1H12a.5.5 0 0 0 0 1h.5a.5.5 0 0 1 .5.5v12a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-12Z"/>
+              <path d="M10.854 7.854a.5.5 0 0 0-.708-.708L7.5 9.793 6.354 8.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3Z"/>
+            </svg> 
+          </div>          
+          </div>
+          <div class="row">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+                <p class="fs-6" id="p1">XXXXX nous appelle pour prendre la responsabilité du XXXXX en date du XXXXX. 
+                  Adhésion Refus MVE. Adhésion Refus FI. Envoi Refus formulaire PA. 
+                  Aucun frais car client a essayer via son EC mais incapable ou Accepte frais de 25$</p>
+          <br/>           
       </div>
     </div>
-
+  </div>
     <!-- JavaScript Bundle with Popper -->
     <script src="js/bootstrap.bundle.min.js"></script>
   </body>
