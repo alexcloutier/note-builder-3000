@@ -73,7 +73,20 @@
       }
     </style>
 
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+
+
 <script>
+
+ 
+
+
+
 function copyToClipboard(element) {
   var $temp = $("<input>");
   $("body").append($temp);
@@ -127,8 +140,8 @@ function copyToClipboard(element) {
         <div class="row gy-5">
           <div class="col-6">
             <form class="form-floating">
-              <input type="email" class="form-control fw-bold text-primary" id="floatingInputValue" placeholder="John Doe CC" value="">
-                <label for="floatingInputValue">Nom du client</label>
+              <input type="email" class="form-control fw-bold text-primary" id="nomclient" placeholder="John Doe CC" value="">
+                <label for="nomclient">Nom du client</label>
             </form>
             <div class="p-3"></div>
         </div>
@@ -156,7 +169,7 @@ function copyToClipboard(element) {
               <div class="accordion accordion-flush" id="accordionExample2">
                 <div class="accordion-item">
                   <h2 class="accordion-header" id="headingOne2">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne2" aria-expanded="false" aria-controls="collapseOne2">
+                    <button class="accordion-button" type="button" id="emmsimple" value="quitte le " data-bs-toggle="collapse" data-bs-target="#collapseOne2" aria-expanded="false" aria-controls="collapseOne2">
                       Déménagement Simple
                     </button>
                   </h2>
@@ -220,13 +233,13 @@ function copyToClipboard(element) {
                         <div class="row">
                           <div class="mb-1">
                             <label for="emmadresse" class="form-label"></label>
-                            <input type="text" class="form-control" id="emmadresse" placeholder="Adresse de prise de responsabilité">
+                            <input type="text" class="form-control text-primary" id="emmadresse" placeholder="Adresse de prise de responsabilité">
                           </div>
                             <div class="row">
                               <div class="mb-3">
                                 <div class="d-inline-flex p-3">
                                   <label for="emmDate"></label>
-                                  <input id="emmDate" class="form-control" type="date" value="" placeholder="2013-01-25">
+                                  <input id="emmDate" class="form-control text-primary" type="date" value="" placeholder="2013-01-25">
                                   <span id="startDateSelected"></span>
                               </div>
                             </div>
@@ -305,14 +318,14 @@ function copyToClipboard(element) {
                         <div class="row">
                           <div class="mb-1">
                             <label for="1p1adresse" class="form-label"></label>
-                            <input type="text" class="form-control" id="1p1adresse" placeholder="Adresse de fin de responsabilité">
+                            <input type="text" class="form-control text-primary" id="1p1adresse" placeholder="Adresse de fin de responsabilité">
                           </div>
                         </div>
                             <div class="row">
                               <div class="mb-1">
                                 <div class="d-inline-flex p-3">
                                   <label for="1p1Date"></label>
-                                  <input id="1p1Date" class="form-control" type="date" value="" placeholder="2013-01-25">
+                                  <input id="1p1Date" class="form-control text-primary" type="date" value="" placeholder="2013-01-25">
                                   <span id="startDateSelected"></span>
                               </div>
                             </div>
@@ -320,14 +333,14 @@ function copyToClipboard(element) {
                           <div class="row">
                             <div class="mb-1">
                               <label for="1p2adresse" class="form-label"></label>
-                              <input type="text" class="form-control" id="1p2adresse" placeholder="Adresse de prise de responsabilité">
+                              <input type="text" class="form-control text-primary" id="1p2adresse" placeholder="Adresse de prise de responsabilité">
                             </div>
                           </div>
                               <div class="row">
                                 <div class="mb-3">
                                   <div class="d-inline-flex p-3">
                                     <label for="1p2date"></label>
-                                    <input id="1p2date" class="form-control" type="date" value="" placeholder="2013-01-25">
+                                    <input id="1p2date" class="form-control text-primary" type="date" value="" placeholder="2013-01-25">
                                     <span id="startDateSelected"></span>
                                 </div>
                               </div>
@@ -407,13 +420,13 @@ function copyToClipboard(element) {
                       <div class="row">
                         <div class="mb-1">
                           <label for="decappelant" class="form-label"></label>
-                          <input type="text" class="form-control" id="decappelant" placeholder="Appelant qui annonce le décès">
+                          <input type="text" class="form-control text-primary" id="decappelant" placeholder="Appelant qui annonce le décès">
                         </div>
                           <div class="row">
                             <div class="mb-1">
                               <div class="d-inline-flex p-3">
                                 <label for="decDate"></label>
-                                <input id="decDate" class="form-control" type="date" value="" placeholder="2013-01-25">
+                                <input id="decDate" class="form-control text-primary" type="date" value="" placeholder="2013-01-25">
                                 <span id="startDateSelected"></span>
                             </div>
                           </div>
@@ -422,13 +435,13 @@ function copyToClipboard(element) {
                           <div class="row">
                             <div class="mb-1">
                               <label for="decadresse" class="form-label"></label>
-                              <input type="text" class="form-control" id="decadresse" placeholder="Adresse de fin de responsabilité">
+                              <input type="text" class="form-control text-primary" id="decadresse" placeholder="Adresse de fin de responsabilité">
                             </div>
                               <div class="row">
                                 <div class="mb-3">
                                   <div class="d-inline-flex p-3">
                                     <label for="finDate"></label>
-                                    <input id="finDate" class="form-control" type="date" value="" placeholder="2013-01-25">
+                                    <input id="finDate" class="form-control text-primary" type="date" value="" placeholder="2013-01-25">
                                     <span id="startDateSelected"></span>
                                 </div>
                               </div>
@@ -457,13 +470,13 @@ function copyToClipboard(element) {
                             <div class="row">
                               <div class="mb-0">
                                 <label for="decpartrep" class="form-label"></label>
-                                <input type="text" class="form-control" id="decpartrep" placeholder="Partenaire qui reprend la responsabilité">
+                                <input type="text" class="form-control text-primary" id="decpartrep" placeholder="Partenaire qui reprend la responsabilité">
                               </div>
                                 <div class="row">
                                   <div class="mb-1">
                                     <div class="d-inline-flex p-3">
                                       <label for="finDate"></label>
-                                      <input id="finDate" class="form-control" type="date" value="" placeholder="2013-01-25">
+                                      <input id="finDate" class="form-control text-primary" type="date" value="" placeholder="2013-01-25">
                                       <span id="startDateSelected"></span>
                                   </div>
                                 </div>
@@ -519,15 +532,15 @@ function copyToClipboard(element) {
                             <div class="d-flex">
                               <div class="flex-fill pe-2 pb-2">
                                 <label for="regnum" class="form-label"></label>
-                                <input type="text" class="form-control" id="regnum" placeholder="Montant$">
+                                <input type="text" class="form-control text-primary" id="regnum" placeholder="Montant$">
                               </div>
                               <div class="flex-fill pe-2 pb-2">
                                 <label for="regnum" class="form-label"></label>
-                                <input type="text" class="form-control" id="regnum" placeholder="Mois restant">
+                                <input type="text" class="form-control text-primary" id="regnum" placeholder="Mois restant">
                               </div>
                               <div class="flex-fill pe-2 pb-4">
                                 <label for="startDatemve"></label>
-                                <input id="startDatemve" class="form-control" type="date">
+                                <input id="startDatemve" class="form-control text-primary" type="date">
                                 <span id="startDateSelected"></span>
                               </div>
                             </div> 
@@ -540,11 +553,11 @@ function copyToClipboard(element) {
                             <div class="d-flex">
                               <div class="flex-fill pe-2 pb-2">
                                 <label for="regnum" class="form-label"></label>
-                                <input type="text" class="form-control" id="regnum" placeholder="Montant$">
+                                <input type="text" class="form-control text-primary" id="regnum" placeholder="Montant$">
                               </div>
                               <div class="flex-fill pe-2 pb-4">
                                 <label for="startDatemve"></label>
-                                <input id="startDatemve" class="form-control" type="date">
+                                <input id="startDatemve" class="form-control text-primary" type="date">
                                 <span id="startDateSelected"></span>
                               </div>
                             </div> 
@@ -618,12 +631,12 @@ function copyToClipboard(element) {
                                   <div class="d-flex">
                                     <div class="flex-fill pe-2 pb-2">
                                       <label for="startDatemve"></label>
-                                      <input id="startDatemve" class="form-control" type="date">
+                                      <input id="startDatemve" class="form-control text-primary" type="date">
                                       <span id="startDateSelected"></span>
                                     </div>
                                     <div class="flex-fill pe-2 pb-2">
                                       <label for="startDatemve"></label>
-                                      <input id="startDatemve" class="form-control" type="date">
+                                      <input id="startDatemve" class="form-control text-primary" type="date">
                                       <span id="startDateSelected"></span>
                                     </div>
                                   </div> 
@@ -693,7 +706,7 @@ function copyToClipboard(element) {
                         <div class="form-check">
                           <input class="form-check-input" type="checkbox" id="soldemve">
                           <label class="form-check-label" for="soldemve">
-                          Création EC
+                            Chèque rembours.
                           </label>
                         </div>
                       </div> 
@@ -701,23 +714,33 @@ function copyToClipboard(element) {
                   <div class="row mx-3">
                     <div class="col">
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="soldemve">
+                          <input class="form-check-input" type="checkbox" id="soldemve" type="button" data-bs-toggle="collapse" data-bs-target="#encaiss" aria-expanded="false" aria-controls="encaiss">
                           <label class="form-check-label" for="soldemve">
                           Corr. encaissement
                           </label>
                         </div>
                       </div>
-                      <div class="col">
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="soldemve">
-                          <label class="form-check-label" for="soldemve">
-                          Chèque rembours.
-                          </label>
+                      <div class="collapse" id="encaiss">
+                        <div class="card card-body mb-3">
+                          <div class="d-flex">
+                            <div class="p-1 flex-fill">
+                              <label for="regnum" class="form-label"></label>
+                              <input type="text" class="form-control text-primary" id="encaissmon" placeholder="$">                         
+                          </div>
+                            <div class="p-1 flex-fill">
+                            <label for="regnum" class="form-label"></label>
+                            <input type="text" class="form-control text-primary" id="encaissde" placeholder="Du CC">                         
                         </div>
-                    </div> 
-                </div>
+                            <div class="p-1 flex-fill">
+                          <label for="optimois" class="form-label"></label>
+                          <input type="text" class="form-control text-primary" id="encaissa" placeholder="Au CC">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
+                        </div>
               </div>
             </div>
           </div>
@@ -755,11 +778,11 @@ function copyToClipboard(element) {
                             <div class="d-flex">
                               <div class="p-2 flex-fill">
                             <label for="regnum" class="form-label"></label>
-                            <input type="text" class="form-control" id="regnum" placeholder="Montant total $">
+                            <input type="text" class="form-control text-primary" id="regnum" placeholder="Montant total $">
                             </div>
                                 <div class="p-2 flex-fill">
                                   <label for="startDate"></label>
-                                  <input id="startDate" class="form-control" type="date">
+                                  <input id="startDate" class="form-control text-primary" type="date">
                                   <span id="startDateSelected"></span>
                                 </div>
                               </div>
@@ -795,15 +818,15 @@ function copyToClipboard(element) {
                           <div class="d-flex">
                             <div class="p-2 flex-fill">
                             <label for="regnum" class="form-label"></label>
-                            <input type="text" class="form-control" id="regnum" placeholder="$">                         
+                            <input type="text" class="form-control text-primary" id="regnum" placeholder="$">                         
                         </div>
                             <div class="p-2 flex-fill">
                           <label for="optimois" class="form-label"></label>
-                          <input type="text" class="form-control" id="optimois" placeholder="Mois">
+                          <input type="text" class="form-control text-primary" id="optimois" placeholder="Mois">
                           </div>
                                 <div class="p-2 flex-fill">
                                   <label for="startDate"></label>
-                                  <input id="startDate" class="form-control" type="date">
+                                  <input id="startDate" class="form-control text-primary" type="date">
                                   <span id="startDateSelected"></span>
                                 </div>
                               </div>
@@ -840,15 +863,15 @@ function copyToClipboard(element) {
                           <div class="d-flex">
                             <div class="p-2 flex-fill">
                             <label for="lternum" class="form-label"></label>
-                            <input type="text" class="form-control" id="lternum" placeholder="$">                         
+                            <input type="text" class="form-control text-primary" id="lternum" placeholder="$">                         
                         </div>
                             <div class="p-2 flex-fill">
                           <label for="ltermois" class="form-label"></label>
-                          <input type="text" class="form-control" id="ltermois" placeholder="Mois">
+                          <input type="text" class="form-control text-primary" id="ltermois" placeholder="Mois">
                           </div>
                                 <div class="p-2 flex-fill">
                                   <label for="startDate"></label>
-                                  <input id="startDate" class="form-control" type="date">
+                                  <input id="startDate" class="form-control text-primary" type="date">
                                   <span id="startDateSelected"></span>
                                 </div>
                               </div>
@@ -886,15 +909,15 @@ function copyToClipboard(element) {
                           <div class="d-flex">
                             <div class="p-2 flex-fill">
                             <label for="4revnum" class="form-label"></label>
-                            <input type="text" class="form-control" id="4revnum" placeholder="$ Non-Échu">                         
+                            <input type="text" class="form-control text-primary" id="4revnum" placeholder="$ Non-Échu">                         
                             </div>
                             <div class="p-2 flex-fill">
                               <label for="nbvers" class="form-label"></label>
-                              <input type="text" class="form-control" id="nbvers" placeholder="Nb de vers.">                         
+                              <input type="text" class="form-control text-primary" id="nbvers" placeholder="Nb de vers.">                         
                             </div>
                             <div class="p-2 flex-fill">
                               <label for="montvers" class="form-label"></label>
-                              <input type="text" class="form-control" id="montvers" placeholder="$ des vers.">
+                              <input type="text" class="form-control text-primary" id="montvers" placeholder="$ des vers.">
                             </div>
                           </div>
                         </div>
@@ -904,11 +927,11 @@ function copyToClipboard(element) {
                           <div class="d-flex">
                             <div class="p-2 flex-fill">
                               <label for="4rev1ervers" class="form-label"></label>
-                             <input type="text" class="form-control" id="4rev1ervers" placeholder="1er versement $">
+                             <input type="text" class="form-control text-primary" id="4rev1ervers" placeholder="1er versement $">
                             </div>
                             <div class="p-2 flex-fill">
                               <label for="startDate"></label>
-                              <input id="startDate" class="form-control" type="date">
+                              <input id="startDate" class="form-control text-primary" type="date">
                               <span id="startDateSelected"></span>
                             </div>
                           </div>
@@ -1044,7 +1067,7 @@ function copyToClipboard(element) {
       </div>
       <div class="row mx-3">
         <div class="col">
-            <div class="form-check form-switch">
+            <div class="form-check">
               <input class="form-check-input" type="checkbox" id="procuration" type="button" data-bs-toggle="collapse" data-bs-target="#mandat" aria-expanded="false" aria-controls="mandat">
               <label class="form-check-label" for="procuration">
                 Procuration
@@ -1056,15 +1079,18 @@ function copyToClipboard(element) {
               <div class="row">
                 <div class="mb-0">
                   <label for="mandatnom" class="form-label"></label>
-                  <input type="text" class="form-control" id="mandatnom" placeholder="Partenaire qui reprend la responsabilité">
+                  <input type="text" class="form-control text-primary" id="mandatnom" placeholder="Partenaire ajouté comme mandataire">
                 </div>
                   <div class="row">
                     <div class="mb-1">
                       <div class="d-inline-flex p-3">
                         <label for="mandatdate"></label>
-                        <input id="mandatdate" class="form-control" type="date" value="" placeholder="2013-01-25">
+                        <input id="mandatdate" class="form-control text-primary" type="date" value="" placeholder="2013-01-25" data-date-format="dd/mm/yyyy">
                         <span id="startDateSelected"></span>
                     </div>
+             
+
+                    
                   </div>
                 </div> 
                 <div class="row">
@@ -1120,14 +1146,13 @@ function copyToClipboard(element) {
       <div class="p-3 border border-2 border-dark rounded-3 bg-primary" style="--bs-border-opacity: .1;--bs-bg-opacity: .08;">
           <div class="row">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-                <p class="fs-6" id="p1">XXXXX nous appelle pour prendre la responsabilité du XXXXX en date du XXXXX. 
-                  Adhésion Refus MVE. Adhésion Refus FI. Envoi Refus formulaire PA. 
-                  Aucun frais car client a essayer via son EC mais incapable ou Accepte frais de 25$</p>
+            <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                <p class="fs-6" id="p1"><small>XXXXX appelle pour aviser du décès de XXXXX en date du XXXXX.<br>Je mets donc fin au contrat de service pour LC XXXX en date du XXXXX.<br><br>Facture internet retirée et EC terminé. Adresse standard mise à jour pour l’envois de la facture finale de succession. Blocage G ajouté au compte de contrat et relance bloqué 90 jours. Partenaire avisé que l’acte de décès sera demandé pour avoir accès à l’information au compte du défunt.<br><br>Partenaire XXXXX prend la responsabilité du LC XXXX à partir XXXXX, Sans frais car décès.</small></p>
           <br/>           
       </div>
       <div class="container">
         <div class="d-flex flex-row-reverse">
-          <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" fill="currentColor" class="bi bi-clipboard-check" viewBox="0 0 16 16" type="button" onclick="copyToClipboard('#p1')">
+          <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" fill="currentColor" class="bi bi-clipboard-check" viewBox="0 0 16 16" type="button"  onclick="copyToClipboard('#p1')">
             <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
             <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
             <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
