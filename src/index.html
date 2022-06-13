@@ -16,6 +16,9 @@
     <!-- Salut ma biche! -->
     
     <style>
+      .text {
+        display: none;
+      }
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -74,26 +77,54 @@
     </style>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <!-- Include Date Range Picker -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 
 
-
 <script>
+  function copyToClipboard(element) {
+    var $temp = $("<input>");
+    $("body").append($temp);
+    $temp.val($(element).text()).select();
+    document.execCommand("copy");
+    $temp.remove();
+  }
 
- 
+  $(document).ready(function() {
+    $('input').change(function(){
+      var parent = $('.form_container.collapse.show');
+      var text = parent.find('.text').html();
 
+      text = text.replace('[[REPLACEME]]', $('#nomclient').val());
 
+      parent.find('input').each(function() {
+        if ($(this).is(':visible')) {
+          let value = $(this).val();
+          if ($(this).hasClass('isSwitch')) {
+            value = $(this).attr('data-off');
+            if ($(this).is(':checked')) {
+              value = $(this).attr('data-on');
+            }
+            text = text + value;
+          } else {
+            value = $(this).val();
+            if ($(this).is(':radio') || $(this).is(':checkbox')) {
+              if ($(this).is(':checked')) {
+                text = text + value;
+              }
+            } else {
+              text = text.replace('[[REPLACEME]]', value);
+            }
+          }
+        }
+      });
 
-function copyToClipboard(element) {
-  var $temp = $("<input>");
-  $("body").append($temp);
-  $temp.val($(element).text()).select();
-  document.execCommand("copy");
-  $temp.remove();
-}
+      $('#textwillcomehere').html(text);
+    });
+  });
 </script>
     <!-- Custom styles for this template -->
     <link href="css/list-groups.css" rel="stylesheet">
@@ -140,7 +171,7 @@ function copyToClipboard(element) {
         <div class="row gy-5">
           <div class="col-6">
             <form class="form-floating">
-              <input type="email" class="form-control fw-bold text-primary" id="nomclient" placeholder="John Doe CC" value="">
+              <input class="form-control fw-bold text-primary" id="nomclient" placeholder="John Doe CC" value="">
                 <label for="nomclient">Nom du client</label>
             </form>
             <div class="p-3"></div>
@@ -173,20 +204,25 @@ function copyToClipboard(element) {
                       Déménagement Simple
                     </button>
                   </h2>
-                  <div id="collapseOne2" class="accordion-collapse collapse" aria-labelledby="headingOne2" data-bs-parent="#accordionExample2">
+                  <div id="collapseOne2" class="form_container accordion-collapse collapse" aria-labelledby="headingOne2" data-bs-parent="#accordionExample2">
+                    <div class="text">
+                      <p>
+                        [[REPLACEME]] nous avise de la fin de responsabilité pour le [[REPLACEME]] en date du [[REPLACEME]]. 
+                      </p>
+                    </div>
                     <div class="accordion-body">
                       <div class="container">
                         <div class="row">
                           <div class="mb-1">
                             <label for="demadresse" class="form-label text-primary"></label>
-                            <input type="text" class="form-control text-primary" id="demadresse" placeholder="Adresse de fin de responsabilité">
+                            <input type="text" class="input form-control text-primary" id="demadresse" placeholder="Adresse de fin de responsabilité">
                           </div>
                         
                           <div class="row">
                               <div class="mb-1">
                                 <div class="d-inline-flex p-3">
                                   <label for="startDate"></label>
-                                  <input id="startDate" class="form-control text-primary" type="date">
+                                  <input id="startDate" class="date input form-control text-primary" type="date">
                                   <span id="startDateSelected"></span>
                                 </div>
                               </div>
@@ -196,21 +232,21 @@ function copyToClipboard(element) {
                         <div class="row">
                           <div class="mb-3">
                             <div class="form-check">
-                              <input class="form-check-input" type="radio" name="majOptions" id="maj1" value="option1">
+                              <input class="input form-check-input" type="radio" name="majOptions" id="maj1" checked value="Adresse pour envoie de la facture finale MAJ au dossier. ">
                              <label class="form-check-label" for="maj1">MAJ de l'adresse</label>
                             </div>
                             <div class="form-check">
-                              <input class="form-check-input" type="radio" name="majOptions" id="maj2" value="option2">
+                              <input class="input form-check-input" type="radio" name="majOptions" id="maj2" value="Refuse de MAJ l'adresse pour la facture finale. ">
                               <label class="form-check-label" for="maj2">MAJ refusée</label>
                             </div>
                             <div class="form-check">
-                              <input class="form-check-input" type="radio" name="majOptions" id="maj3" value="option3">
+                              <input class="input form-check-input" type="radio" name="majOptions" id="maj3" value="Va faire la MAJ de l'adresse pour la facture finale plus tard. ">
                               <label class="form-check-label" for="maj3">MAJ future</label>
                             </div>
                           </div>
                             <div class="mb-3">
                               <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="soldemve">
+                                <input class="input form-check-input" type="checkbox" id="soldemve" value="Avisé du solde possible de fin d'abonnement MVE. ">
                                 <label class="form-check-label" for="soldemve">
                                 Avisé solde de fin d'abonnement MVE
                                 </label>
@@ -227,7 +263,10 @@ function copyToClipboard(element) {
                       Emménagement Simple
                     </button>
                   </h2>
-                  <div id="collapseTwo2" class="accordion-collapse collapse" aria-labelledby="headingTwo2" data-bs-parent="#accordionExample2">
+                  <div id="collapseTwo2" class="form_container accordion-collapse collapse" aria-labelledby="headingTwo2" data-bs-parent="#accordionExample2">
+                    <div class="text">
+                        [[REPLACEME]] nous avise du début de responsabilité pour le [[REPLACEME]] en date du [[REPLACEME]].
+                    </div>
                     <div class="accordion-body">
                       <div class="container">
                         <div class="row">
@@ -248,13 +287,14 @@ function copyToClipboard(element) {
                               <div class="row"> 
                                 <div class="col">
                                   <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                    
+                                    <input class="isSwitch form-check-input" type="checkbox" id="flexSwitchCheckDefault" data-on="Accepte MVE. " data-off="Refus MVE. ">
                                     <label class="form-check-label" for="flexSwitchCheckDefault">Accepte MVE</label>
                                   </div>
                                 </div>
                                   <div class="col">
                                     <div class="form-check form-switch">
-                                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault2">
+                                      <input class="isSwitch form-check-input" type="checkbox" id="flexSwitchCheckDefault2" data-on="Envoi formulaire PA. " data-off="Refus formulaire PA. " >
                                       <label class="form-check-label" for="flexSwitchCheckDefault2">Accepte PA</label>
                                     </div>
                                   </div>
@@ -262,14 +302,14 @@ function copyToClipboard(element) {
                               <div class="row">
                                 <div class="col">
                                   <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault3">
+                                    <input class="isSwitch form-check-input" type="checkbox" id="flexSwitchCheckDefault3" data-on="Adhère FI. " data-off="Refus FI. ">
                                     <label class="form-check-label" for="flexSwitchCheckDefault3">Adhère FI</label>
                                   </div>
                                 </div>
                                 <div class="col">
                                   <div class="mb-3">
                                     <div class="form-check form-switch">
-                                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault4">
+                                      <input class="isSwitch form-check-input" type="checkbox" id="flexSwitchCheckDefault4" data-on="Accepte les frais de 25$. " data-off="Aucun frais car EC. ">
                                       <label class="form-check-label" for="flexSwitchCheckDefault4">Accepte Frais</label>
                                     </div>
                                   </div>
@@ -280,7 +320,9 @@ function copyToClipboard(element) {
                                 <div class="mb-3">
                                   <div class="col">
                                     <div class="form-check">
-                                      <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                      <input class="input form-check-input" type="checkbox" id="gridCheck1" value="<br><br>IMA Local vacant:<br>Avisé de laisser l’interrupteur allumé.<br>
+                                      Débrancher tous les appareils électriques.<br>
+                                      Garanti du retour des services le prochain jours ouvrable à 18h seulement.<br>">
                                       <label class="form-check-label" for="gridCheck1">
                                        IMA Locaux Vacant
                                       </label>
@@ -288,14 +330,14 @@ function copyToClipboard(element) {
                                   </div>
                                   <div class="col">
                                   <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="edentente">
+                                    <input class="input form-check-input" type="checkbox" id="edentente" value="<br>Avisé de nous contacter pour reprendre une entente après la réception de la permière facture.">
                                     <label class="form-check-label" for="edentente">
                                      Désac. Entente
                                 </div>
                               </div>
                               <div class="col">
                                 <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" id="echumve">
+                                  <input class="input form-check-input" type="checkbox" id="echumve" value="<br>Poste(s) Échu(s). Impossible d'ajouter les MVE.">
                                   <label class="form-check-label" for="echumve">
                                    Poste Échu - MVE Impossible
                               </div>
@@ -312,7 +354,10 @@ function copyToClipboard(element) {
                       1P2LC
                     </button>
                   </h2>
-                  <div id="collapseThree2" class="accordion-collapse collapse" aria-labelledby="headingThree2" data-bs-parent="#accordionExample2">
+                  <div id="collapseThree2" class="form_container accordion-collapse collapse" aria-labelledby="headingThree2" data-bs-parent="#accordionExample2">
+                    <div class="text">
+                      [[REPLACEME]] nous avise de la fin de responsabilité pour le [[REPLACEME]] en date du [[REPLACEME]] et du début de responsabilité pour le [[REPLACEME]] en date du [[REPLACEME]].
+                  </div>
                     <div class="accordion-body">
                       <div class="container">
                         <div class="row">
@@ -346,66 +391,69 @@ function copyToClipboard(element) {
                               </div>
                               </div>
                             </div>                       
-                              <div class="row"> 
-                                <div class="col">
-                                  <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                                    <label class="form-check-label" for="flexSwitchCheckDefault">Accepte MVE</label>
-                                  </div>
-                                </div>
-                                  <div class="col">
-                                    <div class="form-check form-switch">
-                                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault2">
-                                      <label class="form-check-label" for="flexSwitchCheckDefault2">Accepte PA</label>
-                                    </div>
-                                  </div>
-                              </div>
-                              <div class="row">
-                                <div class="col">
-                                  <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault3">
-                                    <label class="form-check-label" for="flexSwitchCheckDefault3">Adhère FI</label>
-                                  </div>
-                                </div>
-                                <div class="col">
-                                  <div class="mb-3">
-                                    <div class="form-check form-switch">
-                                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault4">
-                                      <label class="form-check-label" for="flexSwitchCheckDefault4">Accepte Frais</label>
-                                    </div>
-                                  </div>
+                            <div class="row"> 
+                              <div class="col">
+                                <div class="form-check form-switch">
+                                  
+                                  <input class="isSwitch form-check-input" type="checkbox" id="flexSwitchCheckDefault" data-on="Accepte MVE. " data-off="Refus MVE. ">
+                                  <label class="form-check-label" for="flexSwitchCheckDefault">Accepte MVE</label>
                                 </div>
                               </div>
-                          
-                              <div class="row">
-                                <div class="mb-3">
-                                  <div class="col">
-                                    <div class="form-check">
-                                      <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                      <label class="form-check-label" for="gridCheck1">
-                                       IMA Locaux Vacant
-                                      </label>
-                                    </div>
+                                <div class="col">
+                                  <div class="form-check form-switch">
+                                    <input class="isSwitch form-check-input" type="checkbox" id="flexSwitchCheckDefault2" data-on="Envoi formulaire PA. " data-off="Refus formulaire PA. " >
+                                    <label class="form-check-label" for="flexSwitchCheckDefault2">Accepte PA</label>
                                   </div>
-                                  <div class="col">
-                                  <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="edentente">
-                                    <label class="form-check-label" for="edentente">
-                                     Désac. Entente
+                                </div>
+                            </div>
+                            <div class="row">
+                              <div class="col">
+                                <div class="form-check form-switch">
+                                  <input class="isSwitch form-check-input" type="checkbox" id="flexSwitchCheckDefault3" data-on="Adhère FI. " data-off="Refus FI. ">
+                                  <label class="form-check-label" for="flexSwitchCheckDefault3">Adhère FI</label>
                                 </div>
                               </div>
                               <div class="col">
-                                <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" id="echumve">
-                                  <label class="form-check-label" for="echumve">
-                                   Poste Échu - MVE Impossible
+                                <div class="mb-3">
+                                  <div class="form-check form-switch">
+                                    <input class="isSwitch form-check-input" type="checkbox" id="flexSwitchCheckDefault4" data-on="Accepte les frais de 25$. " data-off="Aucun frais car EC. ">
+                                    <label class="form-check-label" for="flexSwitchCheckDefault4">Accepte Frais</label>
+                                  </div>
+                                </div>
                               </div>
                             </div>
+                        
+                            <div class="row">
+                              <div class="mb-3">
+                                <div class="col">
+                                  <div class="form-check">
+                                    <input class="input form-check-input" type="checkbox" id="gridCheck1" value="<br><br>IMA Local vacant:<br>Avisé de laisser l’interrupteur allumé.<br>
+                                    Débrancher tous les appareils électriques.<br>
+                                    Garanti du retour des services le prochain jours ouvrable à 18h seulement.<br>">
+                                    <label class="form-check-label" for="gridCheck1">
+                                     IMA Locaux Vacant
+                                    </label>
+                                  </div>
+                                </div>
+                                <div class="col">
+                                <div class="form-check">
+                                  <input class="input form-check-input" type="checkbox" id="edentente" value="<br>Avisé de nous contacter pour reprendre une entente après la réception de la permière facture.">
+                                  <label class="form-check-label" for="edentente">
+                                   Désac. Entente
                               </div>
-                              </div>
-                            </div>  
-                       </div>
-                    </div>
+                            </div>
+                            <div class="col">
+                              <div class="form-check">
+                                <input class="input form-check-input" type="checkbox" id="echumve" value="<br>Poste(s) Échu(s). Impossible d'ajouter les MVE.">
+                                <label class="form-check-label" for="echumve">
+                                 Poste Échu - MVE Impossible
+                            </div>
+                          </div>
+                            </div>
+                            </div>
+                          </div>  
+                     </div>
+                  </div>
                   
                 
               <div class="accordion-item">
@@ -414,7 +462,10 @@ function copyToClipboard(element) {
                     Décès
                   </button>
                 </h2>
-                <div id="collapseFour2" class="accordion-collapse collapse" aria-labelledby="headingFour2" data-bs-parent="#accordionExample2">
+                <div id="collapseFour2" class="form_container accordion-collapse collapse" aria-labelledby="headingFour2" data-bs-parent="#accordionExample2">
+                  <div class="text">
+                    Décès de [[REPLACEME]] annoncé par [[REPLACEME]] en date du [[REPLACEME]]. Je mets donc fin au contrat de service pour le [[REPLACEME]] en date du [[REPLACEME]]. Facture internet retirée et EC terminé. Blocage G ajouté au compte de contrat et relance bloqué 90 jours. Partenaire avisé que l’acte de décès sera demandé pour avoir accès à l’information au compte du défunt. Partenaire XXXXX prend la responsabilité du LC XXXX à partir XXXXX, Sans frais car décès.
+                </div>
                   <div class="accordion-body">
                     <div class="container">
                       <div class="row">
@@ -449,7 +500,7 @@ function copyToClipboard(element) {
                         <div class="row">
                           <div class="mb-3">
                           <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="stdmaj">
+                            <input class="form-check-input" type="checkbox" id="stdmaj" value="Adresse standard mise à jour pour l’envoi de la facture finale de succession.">
                             <label class="form-check-label" for="stdmaj">
                               Adresse std MAJ
                             </label>
@@ -460,7 +511,7 @@ function copyToClipboard(element) {
                           <div class="col">
                             <div class="mb-3">
                            <div class="form-check form-switch">
-                              <input class="form-check-input" type="checkbox" id="reprise" type="button" data-bs-toggle="collapse" data-bs-target="#represpo" aria-expanded="false" aria-controls="represpo">
+                              <input class="isSwitch form-check-input" type="checkbox" id="reprise" type="button" data-bs-toggle="collapse" data-bs-target="#represpo" aria-expanded="false" aria-controls="represpo" data-on="<br><br>[[REPLACEME]] accepte de reprendre la responsabilité en date du [[REPLACEME]]" data-off="Refus de reprise de respo. " >
                               <label class="form-check-label" for="reprise">Reprise de respo</label>
                             </div>
                           </div>
@@ -518,14 +569,17 @@ function copyToClipboard(element) {
                       MVE
                     </button>
                   </h2>
-                  <div id="collapseOne4" class="accordion-collapse collapse" aria-labelledby="headingOne4" data-bs-parent="#fact">
+                  <div id="collapseOne4" class="form_container accordion-collapse collapse" aria-labelledby="headingOne4" data-bs-parent="#fact">
+                    <div class="text">
+                      [[REPLACEME]]
+                  </div>
                     <div class="accordion-body">
                       <div class="container">
                         <div class="col">
                         <div class="row">
                           <div class="mb-3">
                             <div class="form-check">
-                            <input class="form-check-input" type="radio" name="mveOptions" id="mve1" value="option1" type="button" data-bs-toggle="collapse" data-bs-target="#ajoutmve" aria-expanded="false" aria-controls="ajoutmve">
+                            <input class="input form-check-input" type="radio" name="mveOptions" id="mve1" value="ajoute les MVE au compte. [[REPLACEME]]$ pour les [[REPLACEME]] mois restants. Payable a partir du [[REPLACEME]]." type="button" data-bs-toggle="collapse" data-bs-target="#ajoutmve" aria-expanded="false" aria-controls="ajoutmve">
                             <label class="form-check-label" for="maj1">Ajout MVE</label>
                           </div>
                           <div class="collapse" id="ajoutmve" data-bs-parent="#collapseOne4">
@@ -546,7 +600,7 @@ function copyToClipboard(element) {
                             </div> 
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="mveOptions" id="mve2" value="option2" type="button" data-bs-toggle="collapse" data-bs-target="#modifmve" aria-expanded="false" aria-controls="modifmve">
+                            <input class="input form-check-input" type="radio" name="mveOptions" id="mve2" value="modifie la mensualité de son MVE. [[REPLACEME]]$ commencant le [[REPLACEME]]." type="button" data-bs-toggle="collapse" data-bs-target="#modifmve" aria-expanded="false" aria-controls="modifmve">
                             <label class="form-check-label" for="maj2">Modif. MVE</label>
                           </div>
                           <div class="collapse" id="modifmve" data-bs-parent="#collapseOne4">
@@ -563,7 +617,7 @@ function copyToClipboard(element) {
                             </div> 
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="mveOptions" id="mve3" value="option3" type="button" data-bs-toggle="collapse" data-bs-target="#retraitmve" aria-expanded="false" aria-controls="retraitmve">
+                            <input class="input form-check-input" type="radio" name="mveOptions" id="mve3" value="retire son MVE du compte." type="button" data-bs-toggle="collapse" data-bs-target="#retraitmve" aria-expanded="false" aria-controls="retraitmve">
                             <label class="form-check-label" for="maj3">Retrait MVE</label>
                           </div>
                           <div class="collapse" id="retraitmve" data-bs-parent="#collapseOne4">
@@ -573,14 +627,14 @@ function copyToClipboard(element) {
                         <div class="row">
                           <div class="mb-3">
                                 <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" id="soldemve">
+                                  <input class="form-check-input" type="checkbox" id="soldemve" value=" Avisé du montant de solde de fin MVE.">
                                   <label class="form-check-label" for="soldemve">
                                   Explication solde de fin d'abonnement MVE
                                   </label>
                                 </div>
                                 
                                 <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" id="soldemve">
+                                  <input class="form-check-input" type="checkbox" id="soldemve" value=" Avait des questions quant a l'écart MVE">
                                   <label class="form-check-label" for="soldemve">
                                   Explication écart MVE
                                   </label>
@@ -599,22 +653,25 @@ function copyToClipboard(element) {
                       PA
                     </button>
                   </h2>
-                  <div id="collapseTwo4" class="accordion-collapse collapse" aria-labelledby="headingTwo4" data-bs-parent="#fact">
-                    <div class="accordion-body">
+                  <div id="collapseTwo4" class="form_container accordion-collapse collapse" aria-labelledby="headingTwo4" data-bs-parent="#fact">
+                   <div class="text">
+                      [[REPLACEME]]
+                  </div>
+                   <div class="accordion-body">
                       <div class="container">
                         <div class="col">
                         <div class="row">
                           <div class="mb-3">
                             <div class="form-check">
-                            <input class="form-check-input" type="radio" name="paOptions" id="pa1" value="option1">
+                            <input class="form-check-input" type="radio" name="paOptions" id="pa1" value="ajoute le PA au compte.">
                             <label class="form-check-label" for="maj1">Ajout PA</label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="paOptions" id="pa2" value="option2">
+                            <input class="form-check-input" type="radio" name="paOptions" id="pa2" value="retire la PA au compte.">
                             <label class="form-check-label" for="maj2">Retire PA</label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="paOptions" id="pa3" value="option3">
+                            <input class="form-check-input" type="radio" name="paOptions" id="pa3" value="modifie son PA au compte.">
                             <label class="form-check-label" for="maj3">Change le PA</label>
                           </div>
                         </div>
@@ -622,7 +679,7 @@ function copyToClipboard(element) {
                         <div class="row">
                           <div class="mb-3">
                                 <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" id="deplacedate" type="button" data-bs-toggle="collapse" data-bs-target="#deplacepa" aria-expanded="false" aria-controls="deplacepa">
+                                  <input class="input form-check-input" type="checkbox" id="deplacedate" type="button" data-bs-toggle="collapse" data-bs-target="#deplacepa" aria-expanded="false" aria-controls="deplacepa" value="déplace la date du PA prévu en date du [[REPLACEME]] pour le [[REPLACEME]].">
                                   <label class="form-check-label" for="deplacedate">
                                   Déplace la date d'un PA
                                   </label>
@@ -655,12 +712,15 @@ function copyToClipboard(element) {
                       Facture
                     </button>
                   </h2>
-                  <div id="collapseThree4" class="accordion-collapse collapse" aria-labelledby="headingThree4" data-bs-parent="#fact">
+                  <div id="collapseThree4" class="form_container accordion-collapse collapse" aria-labelledby="headingThree4" data-bs-parent="#fact">
+                    <div class="text">
+                      [[REPLACEME]]
+                  </div>
                     <div class="accordion-body">
                       <div class="row mt-2 mx-3">
                         <div class="col">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" id="soldemve">
+                              <input class="input form-check-input" type="checkbox" id="soldemve" value="voulait des explications sur le solde de la facture. " >
                               <label class="form-check-label" for="soldemve">
                               Explic. Solde
                               </label>
@@ -668,7 +728,7 @@ function copyToClipboard(element) {
                           </div>
                           <div class="col">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" id="soldemve">
+                              <input class="input form-check-input" type="checkbox" id="soldemve" value="voulait des explications sur sa consommation. ">
                               <label class="form-check-label" for="soldemve">
                               Explic. Conso
                               </label>
@@ -678,7 +738,7 @@ function copyToClipboard(element) {
                     <div class="row mx-3">
                       <div class="col">
                           <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="soldemve">
+                            <input class="input form-check-input" type="checkbox" id="soldemve" value="voulait des explications sur la facture finale. ">
                             <label class="form-check-label" for="soldemve">
                             Explic. Facture Finale
                             </label>
@@ -686,7 +746,7 @@ function copyToClipboard(element) {
                         </div>
                         <div class="col">
                           <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="soldemve">
+                            <input class="input form-check-input" type="checkbox" id="soldemve" value="voulait qu'on lui renvoi sa facture la plus récente. ">
                             <label class="form-check-label" for="soldemve">
                             Réimp. Facture
                             </label>
@@ -696,7 +756,7 @@ function copyToClipboard(element) {
                   <div class="row mx-3">
                     <div class="col">
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="soldemve">
+                          <input class="input form-check-input" type="checkbox" id="soldemve" value="voulait qu'on lui retire la FI pour qu'il conserve sa facture papier. ">
                           <label class="form-check-label" for="soldemve">
                           Retrait FI
                           </label>
@@ -704,7 +764,7 @@ function copyToClipboard(element) {
                       </div>
                       <div class="col">
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="soldemve">
+                          <input class="input form-check-input" type="checkbox" id="soldemve" value="appelle pour nous demander l'envoi un chèque de remboursement pour le crédit au compte. ">
                           <label class="form-check-label" for="soldemve">
                             Chèque rembours.
                           </label>
@@ -714,7 +774,7 @@ function copyToClipboard(element) {
                   <div class="row mx-3">
                     <div class="col">
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" id="soldemve" type="button" data-bs-toggle="collapse" data-bs-target="#encaiss" aria-expanded="false" aria-controls="encaiss">
+                          <input class="input form-check-input" type="checkbox" id="soldemve" type="button" data-bs-toggle="collapse" data-bs-target="#encaiss" aria-expanded="false" aria-controls="encaiss" value="appelle pour une correction d'encaissement de [[REPLACEME]]$ du CC [[REPLACEME]] au CC [[REPLACEME]]." >
                           <label class="form-check-label" for="soldemve">
                           Corr. encaissement
                           </label>
@@ -740,7 +800,7 @@ function copyToClipboard(element) {
                     </div>
                   </div>
                 </div>
-                        </div>
+                </div>
               </div>
             </div>
           </div>
@@ -770,7 +830,11 @@ function copyToClipboard(element) {
                       REG
                     </button>
                   </h2>
-                  <div id="collapseOne3" class="accordion-collapse collapse" aria-labelledby="headingOne3" data-bs-parent="#recou">
+                  <div id="collapseOne3" class="form_container accordion-collapse collapse" aria-labelledby="headingOne3" data-bs-parent="#recou">
+                    <div class="text">
+                      [[REPLACEME]] appelle pour prendre une entente de paiement et accepte une entente de paiement REG de [[REPLACEME]]$ payable avant le [[REPLACEME]].<br>
+                      Avisé du montant et de la date et que s'il y a non-respect de l'entente, les procédures de recouvrement reprendront.<br>
+                  </div>
                     <div class="accordion-body">
                       <div class="container">
                         <div class="row">
@@ -793,7 +857,7 @@ function copyToClipboard(element) {
                         <div class="row">
                             <div class="mb-3">
                               <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="soldemve">
+                                <input class="input form-check-input" type="checkbox" id="soldemve" value="Accepte l'alerte courriel 48h">
                                 <label class="form-check-label" for="soldemve">
                                 Alerte 48h
                                 </label>
@@ -810,7 +874,11 @@ function copyToClipboard(element) {
                       OPTI
                     </button>
                   </h2>
-                  <div id="collapseTwo3" class="accordion-collapse collapse" aria-labelledby="headingTwo3" data-bs-parent="#recou">
+                  <div id="collapseTwo3" class="form_container accordion-collapse collapse" aria-labelledby="headingTwo3" data-bs-parent="#recou">
+                    <div class="text">
+                      [[REPLACEME]] appelle pour prendre une entente de paiement et accepte une entente de paiement OPTI de [[REPLACEME]]$ pendant [[REPLACEME]] mois commençant le [[REPLACEME]].<br>
+                      Avisé des montants et des dates et que s'il y a non-respect de l'entente, les procédures de recouvrement reprendront.<br>
+                  </div>
                     <div class="accordion-body">
                       <div class="container">
                         <div class="row">
@@ -837,7 +905,7 @@ function copyToClipboard(element) {
                           <div class="col">
                             <div class="mb-3">
                               <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="soldemve">
+                                <input class="input form-check-input" type="checkbox" id="soldemve" value="Accepte l'alerte courriel 48h">
                                 <label class="form-check-label" for="soldemve">
                                 Alerte 48h
                                 </label>
@@ -855,7 +923,11 @@ function copyToClipboard(element) {
                       LTER
                     </button>
                   </h2>
-                  <div id="collapseThree3" class="accordion-collapse collapse" aria-labelledby="headingThree3" data-bs-parent="#recou">
+                  <div id="collapseThree3" class="form_container accordion-collapse collapse" aria-labelledby="headingThree3" data-bs-parent="#recou">
+                    <div class="text">
+                      [[REPLACEME]] appelle pour prendre une entente de paiement et accepte une entente de paiement LTER de [[REPLACEME]]$ pendant [[REPLACEME]] mois commençant le [[REPLACEME]].<br>
+                      Avisé des montants et des dates et que s'il y a non-respect de l'entente, les procédures de recouvrement reprendront.<br>
+                  </div>
                     <div class="accordion-body">
                        <div class="container">
                         <div class="row">
@@ -882,7 +954,7 @@ function copyToClipboard(element) {
                           <div class="col">
                             <div class="mb-3">
                               <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="soldemve">
+                                <input class="input form-check-input" type="checkbox" id="soldemve" value="Accepte l'alerte courriel 48h">
                                 <label class="form-check-label" for="soldemve">
                                 Alerte 48h
                                 </label>
@@ -901,7 +973,12 @@ function copyToClipboard(element) {
                     4REV
                   </button>
                 </h2>
-                <div id="collapseFour3" class="accordion-collapse collapse" aria-labelledby="headingFour3" data-bs-parent="#recou">
+                <div id="collapseFour3" class="form_container accordion-collapse collapse" aria-labelledby="headingFour3" data-bs-parent="#recou">
+                  <div class="text">
+                    [[REPLACEME]] accepte entente 4REV. Montant non-échu de [[REPLACEME]]$ donc je divise en [[REPLACEME]] versements de [[REPLACEME]]$.<br>
+                    1er versement le [[REPLACEME]] et autres versements aux dates d'échéance de ses facture MVE<br>
+                    Client est au courant des modalités.<br>
+                </div>
                   <div class="accordion-body">
                     <div class="container">
                       <div class="row">
@@ -942,7 +1019,7 @@ function copyToClipboard(element) {
                         <div class="col">
                           <div class="mb-3">
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" id="soldemve">
+                              <input class="input form-check-input" type="checkbox" id="soldemve" value="Accepte l'alerte courriel 48h">
                               <label class="form-check-label" for="soldemve">
                               Alerte 48h
                               </label>
@@ -973,20 +1050,21 @@ function copyToClipboard(element) {
             </span>
             </button>
           </h2>
-          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree">
+          <div id="collapseThree" class="form_container accordion-collapse collapse" aria-labelledby="headingThree">
+            <div class="text">[[REPLACEME]]</div>
             <div class="accordion-body">
               <div class="row mt-2 mx-3">
                 <div class="col">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="soldemve">
-                      <label class="form-check-label" for="soldemve">
+                      <input class="input form-check-input" type="checkbox" id="transfit" value=" a besoin de contacter le département IT. Transfert *770.">
+                      <label class="form-check-label" for="transfit">
                       Transfert IT
                       </label>
                     </div>
                   </div>
                   <div class="col">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="soldemve">
+                      <input class="input form-check-input" type="checkbox" id="soldemve" value=" a besoin d'être transféré MFR. Transfert *796.">
                       <label class="form-check-label" for="soldemve">
                       Transfert MFR
                       </label>
@@ -996,7 +1074,7 @@ function copyToClipboard(element) {
             <div class="row mx-3">
               <div class="col">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="soldemve">
+                    <input class="input form-check-input" type="checkbox" id="soldemve" value=" a besoin d'être transféré au recouvrement. Transfert *774. ">
                     <label class="form-check-label" for="soldemve">
                     Transfert Recou.
                     </label>
@@ -1004,7 +1082,7 @@ function copyToClipboard(element) {
                 </div>
                 <div class="col">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="soldemve">
+                    <input class="input form-check-input" type="checkbox" id="soldemve" value=" est préqualifable MFR alors je transfert au *796">
                     <label class="form-check-label" for="soldemve">
                     Préqualifiable MFR
                     </label>
@@ -1014,7 +1092,7 @@ function copyToClipboard(element) {
           <div class="row mx-3">
             <div class="col">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="soldemve">
+                  <input class="input form-check-input" type="checkbox" id="soldemve" value="testicule">
                   <label class="form-check-label" for="soldemve">
                   Transfert Webtech
                   </label>
@@ -1022,7 +1100,7 @@ function copyToClipboard(element) {
               </div>
               <div class="col">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="soldemve">
+                  <input class="input form-check-input" type="checkbox" id="soldemve" value="testicule">
                   <label class="form-check-label" for="soldemve">
                   Création EC
                   </label>
@@ -1032,7 +1110,7 @@ function copyToClipboard(element) {
           <div class="row mx-3">
             <div class="col">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="soldemve">
+                  <input class="input form-check-input" type="checkbox" id="soldemve" value="testicule">
                   <label class="form-check-label" for="soldemve">
                   E/D web
                   </label>
@@ -1040,7 +1118,7 @@ function copyToClipboard(element) {
               </div>
               <div class="col">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="soldemve">
+                  <input class="input form-check-input" type="checkbox" id="soldemve" value="testicule">
                   <label class="form-check-label" for="soldemve">
                   MAJ Adresse std
                   </label>
@@ -1050,7 +1128,7 @@ function copyToClipboard(element) {
         <div class="row mx-3">
           <div class="col">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="soldemve">
+                <input class="input form-check-input" type="checkbox" id="soldemve" value="testicule">
                 <label class="form-check-label" for="soldemve">
                   MAJ Cellulaire
                 </label>
@@ -1058,7 +1136,7 @@ function copyToClipboard(element) {
             </div>
             <div class="col">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="soldemve">
+                <input class="input form-check-input" type="checkbox" id="soldemve" value="testicule">
                 <label class="form-check-label" for="soldemve">
                   MAJ Courriel
                 </label>
@@ -1132,35 +1210,30 @@ function copyToClipboard(element) {
         </div>
       </div>
     </div>
-  </div>
+    </div>
       <div class="p-2"></div>
-      <div class="container-fluid h-100 w-25 d-flex flex-column justify-content-center">
-        <div class="row d-flex justify-content-center">
-          <div class="col-6">
-      <div class="h4 pb-3 mb-4 text-dark border-bottom border-dark border-3" style="--bs-border-opacity: .1;" class="rounded-5">
+<div class="container-fluid h-100 w-25 d-flex flex-column justify-content-center">
+      <div class="row d-flex justify-content-center">
+      <div class="col-6">
+        <div class="h4 pb-3 mb-4 text-dark border-bottom border-dark border-3" style="--bs-border-opacity: .1;" class="rounded-5">
       </div>
     </div>
   </div>
 </div>
-    <div class="container pt-1">
-      <div class="p-3 border border-2 border-dark rounded-3 bg-primary" style="--bs-border-opacity: .1;--bs-bg-opacity: .08;">
-          <div class="row">
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-            <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
-                <p class="fs-6" id="p1"><small>XXXXX appelle pour aviser du décès de XXXXX en date du XXXXX.<br>Je mets donc fin au contrat de service pour LC XXXX en date du XXXXX.<br><br>Facture internet retirée et EC terminé. Adresse standard mise à jour pour l’envois de la facture finale de succession. Blocage G ajouté au compte de contrat et relance bloqué 90 jours. Partenaire avisé que l’acte de décès sera demandé pour avoir accès à l’information au compte du défunt.<br><br>Partenaire XXXXX prend la responsabilité du LC XXXX à partir XXXXX, Sans frais car décès.</small></p>
-          <br/>           
-      </div>
-      <div class="container">
+  <div class="container pt-1">
+      <div class=" p-3 border border-2 border-dark rounded-3 bg-primary" style="--bs-border-opacity: .1;--bs-bg-opacity: .08;">   
+        <div id="textwillcomehere"></div>
         <div class="d-flex flex-row-reverse">
-          <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" fill="currentColor" class="bi bi-clipboard-check" viewBox="0 0 16 16" type="button"  onclick="copyToClipboard('#p1')">
+          <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" fill="currentColor" class="bi bi-clipboard-check" viewBox="0 0 16 16" type="button"  onclick="copyToClipboard('#textwillcomehere')">
             <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
             <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
             <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
           </svg> 
-        </div>          
         </div>
+      </div>
     </div>
   </div>
+
     <!-- JavaScript Bundle with Popper -->
     <script src="js/bootstrap.bundle.min.js"></script>
   </body>
